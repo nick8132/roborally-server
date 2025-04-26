@@ -1,10 +1,16 @@
 package com.example.accessing_data_rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(
+        scope=User.class,
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "uid")
 @Table(name="user_table") // this is important! "user" is a keyword in H2 and not an identifier
 public class User {
 
